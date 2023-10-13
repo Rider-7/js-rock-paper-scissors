@@ -11,3 +11,25 @@ function getComputerChoice() {
     return shapes[idx];
 }
 
+function getPlayerChoice() {
+    let playerChoice = prompt("Please input a shape: 'Rock', 'Paper', or 'Scissors' (Case-insensitive).");
+     playerChoice = playerChoice.toLocaleLowerCase();
+
+     return shapes.includes(playerChoice) ? playerChoice : "Invalid shape. Please try again";
+}
+
+
+
+// function round(playerSelection, computerSelection) {
+//     // 1. Draw: same selections
+//     // 2. Win/Lose: rock -> scissors, scissors -> paper, paper -> rock
+
+
+//     if (playerSelection === computerSelection) return "Draw!";
+
+//     switch(playerSelection) {
+//         case 'rock':
+//             if (computerSelection === 'scissors') return "Win!"
+//     }
+
+// }
