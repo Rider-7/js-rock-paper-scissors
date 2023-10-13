@@ -15,30 +15,58 @@ function getPlayerChoice() {
     let playerChoice = prompt("Please input a shape: 'Rock', 'Paper', or 'Scissors' (Case-insensitive).");
      playerChoice = playerChoice.toLocaleLowerCase();
 
-     return shapes.includes(playerChoice) ? playerChoice : "Invalid shape. Please try again";
+    playerChoice = shapes.includes(playerChoice) ? playerChoice : 'invalid';
+
+     if (playerChoice === 'invalid') {
+        console.log("Invalid Shape. Please try again.");
+        return getPlayerChoice();
+    }
+
+    return playerChoice
 }
 
 function round(playerSelection, computerSelection) {
 
-    let result;
-    
-    if (playerSelection === computerSelection) result = 0;
+    let resultEncoding;
+
+    if (playerSelection === computerSelection) resultEncoding = 2;
 
     switch(playerSelection) {
         case 'rock':
             if (computerSelection === 'scissors')
-                result = 1;
+                resultEncoding = 0;
                 break;
         case 'paper':
             if (computerSelection === 'rock')
-                result = 1;
+                resultEncoding = 0;
                 break;
         case 'scissors':
             if (computerSelection === 'paper')
-                result = 1;
+                resultEncoding = 0;
                 break;
     }
-    if (result === undefined) result = -1;
+    if (resultEncoding === undefined) resultEncoding = 1;
 
-    return result;
+    const printResultMessage = function(resultEncoding) {
+
+        const resultArr = ['You win!', 'You lose!', 'Draw!'];
+        const verbArr = ['beats', 'loses to', 'is the same as'];
+
+        let resultText = resultArr[resultEncoding];
+        let verb = verbArr[resultEncoding];
+        
+        console.log(`${resultText} ${playerSelection} ${verb} ${computerSelection}.`);
+    }
+
+    printResultMessage(resultEncoding);
+    return resultEncoding;
 }
+
+// function game() {
+//     let playerScore;
+//     let computerScore;
+
+//     for(let i = 0; i < 4; i++) {
+//         result = round(getPlayerChoice(), getComputerChoice());
+//     }
+// }
