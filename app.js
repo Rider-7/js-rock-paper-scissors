@@ -62,11 +62,24 @@ function round(playerSelection, computerSelection) {
     return resultEncoding;
 }
 
-// function game() {
-//     let playerScore;
-//     let computerScore;
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
 
-//     for(let i = 0; i < 4; i++) {
-//         result = round(getPlayerChoice(), getComputerChoice());
-//     }
-// }
+    for(let i = 0; i < 5; i++) {
+        let resultEncoding = round(getPlayerChoice(), getComputerChoice());
+
+        switch(resultEncoding) {
+            case 0:
+                playerScore += 1;
+                break;
+            case 1:
+                computerScore += 1;
+                break;
+        }
+
+        console.log(`Your score: ${playerScore}, Computer's score: ${computerScore}`);
+    }
+}
+
+game();
