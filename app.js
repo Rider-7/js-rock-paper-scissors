@@ -18,18 +18,27 @@ function getPlayerChoice() {
      return shapes.includes(playerChoice) ? playerChoice : "Invalid shape. Please try again";
 }
 
+function round(playerSelection, computerSelection) {
 
+    let result;
+    
+    if (playerSelection === computerSelection) result = 0;
 
-// function round(playerSelection, computerSelection) {
-//     // 1. Draw: same selections
-//     // 2. Win/Lose: rock -> scissors, scissors -> paper, paper -> rock
+    switch(playerSelection) {
+        case 'rock':
+            if (computerSelection === 'scissors')
+                result = 1;
+                break;
+        case 'paper':
+            if (computerSelection === 'rock')
+                result = 1;
+                break;
+        case 'scissors':
+            if (computerSelection === 'paper')
+                result = 1;
+                break;
+    }
+    if (result === undefined) result = -1;
 
-
-//     if (playerSelection === computerSelection) return "Draw!";
-
-//     switch(playerSelection) {
-//         case 'rock':
-//             if (computerSelection === 'scissors') return "Win!"
-//     }
-
-// }
+    return result;
+}
