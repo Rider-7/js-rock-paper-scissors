@@ -81,5 +81,3 @@ function game() {
         console.log(`Your score: ${playerScore}, Computer's score: ${computerScore}`);
     }
 }
-
-game();
