@@ -1,32 +1,12 @@
-//  1. getComputerChoice() -> script returns a random shape
-//  2. round(playerSelection, computerSelection) -> plays a round of rock-paper-scissors with inputted parameter selections,
-//                                                  returns a string declaring the user a winner or loser
-//  3. game() -> plays five rounds of rock-paper-scissors while keeping track of scores
-
-
-let shapes = ['rock', 'paper', 'scissors'];
-
 function getComputerChoice() {
+    const shapes = ['rock', 'paper', 'scissors'];
+
     idx = Math.floor(Math.random() * 3);
     return shapes[idx];
 }
 
-function getPlayerChoice() {
-    let playerChoice = prompt("Please input a shape: 'Rock', 'Paper', or 'Scissors' (Case-insensitive).");
-     playerChoice = playerChoice.toLocaleLowerCase();
-
-    playerChoice = shapes.includes(playerChoice) ? playerChoice : 'invalid';
-
-     if (playerChoice === 'invalid') {
-        console.log("Invalid Shape. Please try again.");
-        return getPlayerChoice();
-    }
-
-    return playerChoice
-}
-
 function round(playerSelection, computerSelection) {
-
+    // Maps results as follows: {0: Win, 1: Lose, 2: Draw}
     let resultEncoding;
 
     if (playerSelection === computerSelection) resultEncoding = 2;
@@ -47,7 +27,9 @@ function round(playerSelection, computerSelection) {
     }
     if (resultEncoding === undefined) resultEncoding = 1;
 
-    const printResultMessage = function(resultEncoding) {
+    var victorMessage;
+    var infoMessage;
+    const getResultMessages = (resultEncoding) => {
 
         const resultArr = ['You win!', 'You lose!', 'Draw!'];
         const verbArr = ['beats', 'loses to', 'is the same as'];
@@ -55,29 +37,41 @@ function round(playerSelection, computerSelection) {
         let resultText = resultArr[resultEncoding];
         let verb = verbArr[resultEncoding];
         
-        console.log(`${resultText} ${playerSelection} ${verb} ${computerSelection}.`);
+        victorMessage = `${resultText}`;
+        infoMessage = `${playerSelection} ${verb} ${computerSelection}.`;
     }
 
-    printResultMessage(resultEncoding);
-    return resultEncoding;
+    getResultMessages(resultEncoding);
+    return [resultEncoding, victorMessage, infoMessage];
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+let playerScoreVal = 0;
+let computerScoreVal = 0;
+let numOfRounds = 0;
 
-    for(let i = 0; i < 5; i++) {
-        let resultEncoding = round(getPlayerChoice(), getComputerChoice());
+const playerScore = document.querySelector('.scoreboard > #player > .score');
+const computerScore = document.querySelector('.scoreboard > #computer > .score');
 
-        switch(resultEncoding) {
-            case 0:
-                playerScore += 1;
-                break;
-            case 1:
-                computerScore += 1;
-                break;
-        }
+const victor = document.querySelector('.result > .victor');
+const info = document.querySelector('.result > .info');
 
-        console.log(`Your score: ${playerScore}, Computer's score: ${computerScore}`);
+const selection = document.querySelector('.selection');
+
+selection.addEventListener('click',(e) => {
+    let playerChoice = e.target.id;
+    let [resultEncoding, victorMessage, infoMessage]  = round(playerChoice, getComputerChoice())
+
+    victor.textContent = victorMessage;
+    info.textContent = infoMessage;
+
+    switch(resultEncoding) {
+        case 0:
+            playerScoreVal += 1;
+            playerScore.textContent = playerScoreVal;
+            break;
+        case 1:
+            computerScoreVal += 1;
+            computerScore.textContent = computerScoreVal;
+            break;
     }
-}
+    });

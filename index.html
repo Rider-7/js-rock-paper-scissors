@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js"></script>
+    <script src="app.js" defer  ></script>
 </head>
 <body>
     
@@ -13,19 +13,19 @@
         <div class="title">Rock-Paper-Scissors</div>
 
         <div class="scoreboard">
-            <div class="box">
+            <div id="player" class="box">
                 <div class="text">YOU</div>
-                <div class="score">3</div>
+                <div class="score">0</div>
             </div>
-            <div class="box">
+            <div id = "computer" class="box">
                 <div class="text">COM</div>
-                <div class="score">3</div>
+                <div class="score">0</div>
             </div>
         </div>
 
         <div class="result">
-            <div class="victor">YOU WIN!</div>
-            <div class="info">Rock beats Scissors!</div>
+            <div class="victor">It's Time!</div>
+            <div class="info">Make your selection below to start!</div>
         </div>
 
         <div class="selection">
