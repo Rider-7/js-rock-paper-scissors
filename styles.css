@@ -1,0 +1,72 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.ui {
+    font-size: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    gap:32px;
+}
+
+.ui > .title {
+    text-align: center;
+    font-weight: bolder;
+
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.scoreboard > * {
+    text-align: center;
+}
+
+.scoreboard > .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.scoreboard > .box > .score {
+    background-color: #D9D9D9;
+    padding-inline: 20px;
+
+    height: fit-content;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.result {
+    text-align: center;
+    background-color: #D9D9D9;
+    padding: 20px;
+}
+
+.result > .victor {
+    font-weight: bolder;
+}
+
+.selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+
+.selection button {
+    font-size: 48px;
+    min-width: 266px;
+} 
