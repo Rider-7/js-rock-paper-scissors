@@ -66,7 +66,15 @@ body {
     flex-wrap: wrap;
 }
 
-.selection button {
+.selection > button {
     font-size: 48px;
     min-width: 266px;
-} 
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-width: 0;
+    color: #FFF;
+}
+
+button#paper {background: #B09F4B;}
+button#rock {background: #B04B4B;}
+button#scissors {background: #4BA9B0;}
