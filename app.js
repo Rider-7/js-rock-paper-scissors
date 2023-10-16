@@ -10,7 +10,6 @@ function round(playerSelection, computerSelection) {
     let resultEncoding;
 
     if (playerSelection === computerSelection) resultEncoding = 2;
-
     switch(playerSelection) {
         case 'rock':
             if (computerSelection === 'scissors')
@@ -29,7 +28,7 @@ function round(playerSelection, computerSelection) {
 
     var victorMessage;
     var infoMessage;
-    const getResultMessages = (resultEncoding) => {
+    (() => {
 
         const resultArr = ['You win!', 'You lose!', 'Draw!'];
         const verbArr = ['beats', 'loses to', 'is the same as'];
@@ -39,9 +38,8 @@ function round(playerSelection, computerSelection) {
         
         victorMessage = `${resultText}`;
         infoMessage = `${playerSelection} ${verb} ${computerSelection}.`;
-    }
+    })();
 
-    getResultMessages(resultEncoding);
     return [resultEncoding, victorMessage, infoMessage];
 }
 
