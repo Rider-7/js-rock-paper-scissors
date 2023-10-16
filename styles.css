@@ -54,6 +54,10 @@ body {
     padding: 20px;
 }
 
+.result > .counter {
+    font-size: 24px;
+}
+
 .result > .victor {
     font-weight: bolder;
 }

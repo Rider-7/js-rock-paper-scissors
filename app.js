@@ -47,6 +47,7 @@ let playerScoreVal = 0;
 let computerScoreVal = 0;
 let numOfRounds = 0;
 
+const counter = document.querySelector('.result > .counter');
 const playerScore = document.querySelector('.scoreboard > #player > .score');
 const computerScore = document.querySelector('.scoreboard > #computer > .score');
 
@@ -58,6 +59,9 @@ const selection = document.querySelector('.selection');
 selection.addEventListener('click',(e) => {
     let playerChoice = e.target.id;
     let [resultEncoding, victorMessage, infoMessage]  = round(playerChoice, getComputerChoice())
+
+    numOfRounds += 1;
+    counter.textContent = `Round ${numOfRounds}`;
 
     victor.textContent = victorMessage;
     info.textContent = infoMessage;
